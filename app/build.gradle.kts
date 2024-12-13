@@ -1,7 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
-    kotlin("kapt")
+    id("kotlin-kapt")
 }
 
 android {
@@ -38,10 +38,14 @@ android {
 
 dependencies {
 
-    implementation(libs.androidx.roomruntime)
+    implementation("androidx.room:room-runtime:2.6.0")
+    implementation("androidx.room:room-common:2.6.0")
+    implementation("androidx.room:room-ktx:2.6.0")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.6.2")
+    kapt("androidx.room:room-compiler:2.6.0")
+
     implementation(libs.androidx.room.common)
     implementation(libs.androidx.room.ktx)
-    kapt(libs.room.compiler)
 
     implementation(libs.androidx.recyclerview)
     implementation(libs.androidx.lifecycle.extensions)

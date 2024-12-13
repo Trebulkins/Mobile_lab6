@@ -1,8 +1,10 @@
 package com.example.mobile_lab6
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.room.Room
 import com.example.mobile_lab6.database.CrimeDatabase
+import java.util.UUID
 
 private const val DATABASE_NAME = "crimedatabase"
 
@@ -16,6 +18,9 @@ constructor(context: Context) {
     ).build()
 
     private val crimeDao = database.crimeDao()
+
+    fun getCrimes(): LiveData<List<Crime>> = crimeDao.getCrimes()
+    fun getCrime(id: UUID): LiveData<Crime?> = crimeDao.getCrime(id)
 
     companion object {
         private var INSTANCE: CrimeRepository? = null
