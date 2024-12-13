@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 private const val TAG = "CrimeListFragment"
 class CrimeListFragment : Fragment() {
     private lateinit var crimeRecyclerView: RecyclerView
+    private var adapter: CrimeAdapter? = null
 
     private val crimeListViewModel:
             CrimeListViewModel by lazy {
@@ -33,8 +34,16 @@ class CrimeListFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_crime_list, container, false)
         crimeRecyclerView = view.findViewById<RecyclerView>(R.id.crime_recycler_view)
         crimeRecyclerView.layoutManager = LinearLayoutManager(context)
+        updateUI()
         return view
     }
+
+    private fun updateUI() {
+        val crimes = crimeListViewModel.crimes
+        adapter = CrimeAdapter(crimes)
+        crimeRecyclerView.adapter = adapter
+    }
+
 
     private inner class CrimeHolder(view: View): RecyclerView.ViewHolder(view) {
         val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
