@@ -28,12 +28,28 @@
         android:id="@+id/crime_date"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        tools:text="Выберите время" />
+        android:backgroundTint="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:text="Выберите время" />
 
     <CheckBox
         android:id="@+id/crime_solved"
         android:layout_width="match_parent"
         android:layout_height="64dp"
         android:text="@string/crime_solved_label" />
+
+    <Button
+        android:id="@+id/crime_suspect"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:backgroundTint="#FFEB3B"
+        android:text="@string/crime_suspect_text"
+        android:textColor="#000000" />
+
+    <Button
+        android:id="@+id/crime_report"
+        android:layout_width="match_parent"
+        android:layout_height="59dp"
+        android:text="@string/crime_report_text" />
 
 </LinearLayout>

@@ -5,4 +5,6 @@
     <string name="crime_details_label">Время</string>
     <string name="crime_solved_label">Решено</string>
     <string name="new_crime">Новое преступление</string>
+    <string name="crime_suspect_text">Подозреваемый</string>
+    <string name="crime_report_text">Отправить отчет</string>
 </resources>
