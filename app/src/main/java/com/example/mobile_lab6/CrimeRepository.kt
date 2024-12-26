@@ -8,17 +8,15 @@ import com.example.mobile_lab6.database.migration_1_2
 import java.util.UUID
 import java.util.concurrent.Executors
 
-private const val DATABASE_NAME = "crimedatabase"
+private const val DATABASE_NAME = "crime-database"
 
-class CrimeRepository private
-constructor(context: Context) {
-
-    private val database : CrimeDatabase = Room.databaseBuilder(
-        context.applicationContext,
-        CrimeDatabase::class.java,
-        DATABASE_NAME
+class CrimeRepository private constructor(context: Context) {
+    private val database : CrimeDatabase =
+        Room.databaseBuilder(
+            context.applicationContext,
+            CrimeDatabase::class.java,
+            DATABASE_NAME
     ).addMigrations(migration_1_2).build()
-
 
     private val crimeDao = database.crimeDao()
     private val executor = Executors.newSingleThreadExecutor()

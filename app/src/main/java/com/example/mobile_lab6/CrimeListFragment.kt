@@ -21,15 +21,13 @@ import java.util.UUID
 private const val TAG = "CrimeListFragment"
 
 class CrimeListFragment : Fragment() {
-
     interface Callbacks {
         fun onCrimeSelected(crimeId: UUID)
     }
-    private var callbacks: Callbacks? = null
 
+    private var callbacks: Callbacks? = null
     private lateinit var crimeRecyclerView: RecyclerView
     private var adapter: CrimeAdapter? = CrimeAdapter(emptyList())
-
     private val crimeListViewModel: CrimeListViewModel by lazy {
         ViewModelProviders.of(this)[CrimeListViewModel::class.java]
     }
@@ -111,7 +109,6 @@ class CrimeListFragment : Fragment() {
             this.crime = crime
             titleTextView.text = this.crime.title
             dateTextView.text = this.crime.date.toString()
-            dateTextView.text = this.crime.date.toString()
 
             solvedImageView.visibility = if (crime.isSolved) { View.VISIBLE }
             else { View.GONE }
@@ -127,7 +124,7 @@ class CrimeListFragment : Fragment() {
 
     private inner class CrimeAdapter(var crimes: List<Crime>): RecyclerView.Adapter<CrimeHolder>(){
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CrimeHolder {
-            val view = layoutInflater.inflate(R.layout.list_item_crime, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.list_item_crime, parent, false)
             return CrimeHolder(view)
         }
         override fun getItemCount() = crimes.size
