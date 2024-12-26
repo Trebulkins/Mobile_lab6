@@ -36,7 +36,7 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
     private lateinit var suspectButton: Button
 
     private val crimeDetailViewModel: CrimeDetailViewModel by lazy {
-        ViewModelProviders.of(this).get(CrimeDetailViewModel::class.java)
+        ViewModelProviders.of(this)[CrimeDetailViewModel::class.java]
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,11 +52,11 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
     ): View? {
         val view = inflater.inflate(R.layout.crime_fragment, container, false)
 
-        titleField = view.findViewById(R.id.crime_title) as EditText
-        dateButton = view.findViewById(R.id.crime_date) as Button
-        solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
-        reportButton = view.findViewById<Button>(R.id.crime_report)
-        suspectButton = view.findViewById<Button>(R.id.crime_suspect)
+        titleField = view.findViewById(R.id.crime_title)
+        dateButton = view.findViewById(R.id.crime_date)
+        solvedCheckBox = view.findViewById(R.id.crime_solved)
+        reportButton = view.findViewById(R.id.crime_report)
+        suspectButton = view.findViewById(R.id.crime_suspect)
 
         return view
     }

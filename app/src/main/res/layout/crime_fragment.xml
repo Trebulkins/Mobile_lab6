@@ -30,7 +30,7 @@
         android:layout_height="64dp"
         android:backgroundTint="#3F51B5"
         android:textColor="#FFFFFF"
-        android:text="Выберите время" />
+        tools:text="Выберите время" />
 
     <CheckBox
         android:id="@+id/crime_solved"
