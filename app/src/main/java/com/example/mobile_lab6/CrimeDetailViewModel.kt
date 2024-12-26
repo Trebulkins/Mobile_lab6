@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.switchMap
 import java.util.UUID
 
-class CrimeDetailViewModel() : ViewModel() {
+class CrimeDetailViewModel: ViewModel() {
     private val crimeRepository = CrimeRepository.get()
     private val crimeIdLiveData = MutableLiveData<UUID>()
 
@@ -17,10 +17,12 @@ class CrimeDetailViewModel() : ViewModel() {
     }
 
     fun loadCrime(crimeId: UUID) {
+        Log.d("CrimeDetailViewModel", "Загружаем Crime с ID: $crimeId")
         crimeIdLiveData.value = crimeId
     }
 
     fun saveCrime(crime: Crime) {
+        Log.d("CrimeDetailViewModel", "Сохраняем Crime: $crime")
         crimeRepository.updateCrime(crime)
     }
 }

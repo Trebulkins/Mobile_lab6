@@ -52,9 +52,9 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
     ): View? {
         val view = inflater.inflate(R.layout.crime_fragment, container, false)
 
-        titleField = view.findViewById<EditText>(R.id.crime_title)
-        dateButton = view.findViewById<Button>(R.id.crime_date)
-        solvedCheckBox = view.findViewById<CheckBox>(R.id.crime_solved)
+        titleField = view.findViewById(R.id.crime_title) as EditText
+        dateButton = view.findViewById(R.id.crime_date) as Button
+        solvedCheckBox = view.findViewById(R.id.crime_solved) as CheckBox
         reportButton = view.findViewById<Button>(R.id.crime_report)
         suspectButton = view.findViewById<Button>(R.id.crime_suspect)
 
@@ -64,10 +64,10 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         crimeDetailViewModel.crimeLiveData.observe(
-            viewLifecycleOwner, Observer {
-                crime -> crime?.let {
+            viewLifecycleOwner, Observer { crime ->
+                crime?.let {
                     this.crime = crime
-                updateUI()
+                    updateUI()
                 }
             }
         )
@@ -75,8 +75,7 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
 
     override fun onStart() {
         super.onStart()
-        val titleWatcher = object : TextWatcher
-        {
+        val titleWatcher = object : TextWatcher {
             override fun beforeTextChanged(sequence: CharSequence?, start: Int, count: Int, after: Int) { }
             override fun onTextChanged(sequence: CharSequence?, start: Int, before: Int, count: Int) {
                 crime.title = sequence.toString()

@@ -10,7 +10,6 @@ import java.util.UUID
 
 @Dao
 interface CrimeDao {
-
     @Query("SELECT * FROM crime")
     fun getCrimes(): LiveData<List<Crime>>
 
