@@ -7,7 +7,7 @@
     <string name="new_crime">Новое преступление</string>
     <string name="crime_suspect_text">Подозреваемый</string>
     <string name="crime_report_text">Отправить отчет</string>
-    <string name="crime_report">%1$s! Преступление произошло %2$s. %3$s, и %4$s</string>
+    <string name="crime_report">%1$s! Дата преступления: %2$s. %3$s, и %4$s</string>
     <string name="crime_report_solved">Преступление решено</string>
     <string name="crime_report_unsolved">Преступление не решено</string>
     <string name="crime_report_no_suspect">подозреваемого нет.</string>
