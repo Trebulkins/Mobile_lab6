@@ -2,26 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_margin="16dp"
     android:orientation="vertical">
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
         android:layout_width="match_parent"
-        android:layout_height="45dp"
+        android:layout_height="wrap_content"
         android:text="@string/crime_title_label" />
 
     <EditText
         android:id="@+id/crime_title"
         android:layout_width="match_parent"
-        android:layout_height="67dp"
+        android:layout_height="58dp"
         android:hint="@string/crime_title_hint" />
 
     <TextView
         style="?android:listSeparatorTextViewStyle"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:text="@string/crime_details_label" />
 
     <Button
@@ -30,13 +30,21 @@
         android:layout_height="64dp"
         android:backgroundTint="#3F51B5"
         android:textColor="#FFFFFF"
-        tools:text="Выберите время" />
+        android:text="Выберите время" />
 
     <CheckBox
         android:id="@+id/crime_solved"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="64dp"
+        android:layout_height="50dp"
         android:text="@string/crime_solved_label" />
+
+    <TextView
+        style="?android:listSeparatorTextViewStyle"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/crime_suspect_text" />
 
     <Button
         android:id="@+id/crime_suspect"
@@ -48,6 +56,7 @@
 
     <Button
         android:id="@+id/crime_report"
+        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="59dp"
         android:text="@string/crime_report_text" />

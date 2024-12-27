@@ -44,11 +44,11 @@ class DatePickerFragment : DialogFragment() {
     }
 
     companion object {
-        fun newInstance(date: Date):
-                DatePickerFragment {
+        fun newInstance(date: Date): DatePickerFragment {
             val args = Bundle().apply {
                 putSerializable(ARG_DATE, date)
             }
+
             return DatePickerFragment().apply {
                 arguments = args
             }

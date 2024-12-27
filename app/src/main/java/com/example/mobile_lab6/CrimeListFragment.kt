@@ -108,7 +108,10 @@ class CrimeListFragment : Fragment() {
         fun bind(crime: Crime) {
             this.crime = crime
             titleTextView.text = this.crime.title
-            dateTextView.text = this.crime.date.toString()
+            dateTextView.text = this.crime.date.toString().substring(8, 10) + " / " + // День
+                    this.crime.date.toString().substring(4, 7) + " / " + // Месяц
+                    this.crime.date.toString().substring(30) + // Год
+                    " [" + this.crime.date.toString().substring(0, 3) + "]"// День недели
 
             solvedImageView.visibility = if (crime.isSolved) { View.VISIBLE }
             else { View.GONE }

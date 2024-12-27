@@ -27,6 +27,7 @@ private const val REQUEST_DATE = 0
 private const val REQUEST_CONTACT = 1
 private const val DATE_FORMAT = "EEE, MMM, dd"
 
+@Suppress("DEPRECATION")
 class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
     private lateinit var crime: Crime
     private lateinit var titleField: EditText
@@ -43,6 +44,7 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
         super.onCreate(savedInstanceState)
         crime = Crime()
         val crimeId: UUID = arguments?.getSerializable(ARG_CRIME_ID) as UUID
+        crimeDetailViewModel.loadCrime(crimeId)
     }
 
     override fun onCreateView(
@@ -64,8 +66,8 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         crimeDetailViewModel.crimeLiveData.observe(
-            viewLifecycleOwner, Observer { crime ->
-                crime?.let {
+            viewLifecycleOwner, Observer {
+                crime -> crime?.let {
                     this.crime = crime
                     updateUI()
                 }
@@ -124,7 +126,10 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
 
     private fun updateUI() {
         titleField.setText(crime.title)
-        dateButton.text = crime.date.toString()
+        dateButton.text = crime.date.toString().substring(8, 10) + " / " + // День
+                crime.date.toString().substring(4, 7) + " / " + // Месяц
+                crime.date.toString().substring(30) + // Год
+                " [" + crime.date.toString().substring(0, 3) + "]"// День недели
         solvedCheckBox.apply {
             isChecked = crime.isSolved
             jumpDrawablesToCurrentState()
@@ -134,6 +139,7 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks {
         }
     }
 
+    @Deprecated("Deprecated in Java")
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when { resultCode != Activity.RESULT_OK ->
             return
